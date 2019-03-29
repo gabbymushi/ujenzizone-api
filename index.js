@@ -17,18 +17,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 //bring in models
-let Member = require('./models/members')
+//let Member = require('./models/members')
 
 //route files
 let member = require('./routes/members');
+let forum = require('./routes/forum');
 let auth = require('./routes/auth');
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/members',validateUser,member);
+app.use('/api/v1/forums',validateUser,forum);
 function validateUser(req, res, next) {
     //res.json({status:"error",data:req.headers['x-access-token']});
     jwt.verify(req.headers['x-access-token'],config.secret, function(err, decoded) {
       if (err) {
-        res.json({status:"error", message: err.message, data:null});
+        res.status(403).json({status:"error", message: err.message, data:null});
       }else{
         // add user id to request
         req.body.userId = decoded.id;
