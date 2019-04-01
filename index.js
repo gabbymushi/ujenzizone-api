@@ -22,10 +22,12 @@ app.use(express.json());
 //route files
 let member = require('./routes/members');
 let forum = require('./routes/forum');
+let thread = require('./routes/threads');
 let auth = require('./routes/auth');
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/members',validateUser,member);
 app.use('/api/v1/forums',validateUser,forum);
+app.use('/api/v1/threads',validateUser,thread);
 function validateUser(req, res, next) {
     //res.json({status:"error",data:req.headers['x-access-token']});
     jwt.verify(req.headers['x-access-token'],config.secret, function(err, decoded) {
