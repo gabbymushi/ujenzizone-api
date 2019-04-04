@@ -27,10 +27,12 @@ let auth = require('./routes/auth');
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/members',validateUser,member);
 app.use('/api/v1/forums',validateUser,forum);
+//app.use('/api/v1/forums',forum);
 app.use('/api/v1/threads',validateUser,thread);
 function validateUser(req, res, next) {
     //res.json({status:"error",data:req.headers['x-access-token']});
-    jwt.verify(req.headers['x-access-token'],config.secret, function(err, decoded) {
+    var token = req.headers.authorization.split(' ')[1];
+    jwt.verify(token,config.secret, function(err, decoded) {
       if (err) {
         res.status(403).json({status:"error", message: err.message, data:null});
       }else{
