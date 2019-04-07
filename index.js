@@ -24,6 +24,7 @@ let member = require('./routes/members');
 let forum = require('./routes/forum');
 let thread = require('./routes/threads');
 let auth = require('./routes/auth');
+let comment = require('./routes/comment');
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/members',validateUser,member);
 app.use('/api/v1/forums',validateUser,forum);
