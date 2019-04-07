@@ -15,4 +15,7 @@ module.exports = {
             res.status(500).json(err)
         });
     },
+    edit: function (req, res, next) {
+
+    },
 }
