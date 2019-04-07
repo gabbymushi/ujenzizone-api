@@ -18,4 +18,7 @@ module.exports = {
     edit: function (req, res, next) {
 
     },
+    update: function (req, res, next) {
+
+    },
 }
