@@ -14,6 +14,7 @@ module.exports = {
     store: function (req, res, next) {
         let comment = new Comment();
         comment.comment=req.body.comment;
-    
+        comment.thread_id=req.body.thread_id;
+      
     },
 }
