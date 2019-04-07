@@ -14,5 +14,14 @@ module.exports = {
         .catch(err => {
             res.status(500).json(err)
         });
+    },
+    edit: function (req, res, next) {
+
+    },
+    update: function (req, res, next) {
+
+    },
+    delete: function (req, res, next) {
+
     }
 }
