@@ -10,6 +10,6 @@ let commentSchema = mongoose.Schema({
     },
     member_id: {
         type: String,
-       
+        required: true
     }
 });
