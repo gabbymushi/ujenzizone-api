@@ -28,7 +28,7 @@ let comment = require('./routes/comment');
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/members',validateUser,member);
 app.use('/api/v1/forums',validateUser,forum);
-app.use('/api/v1/comment',validateUser,comment);
+app.use('/api/v1/comments',validateUser,comment);
 //app.use('/api/v1/forums',forum);
 app.use('/api/v1/threads',validateUser,thread);
 function validateUser(req, res, next) {
