@@ -1,4 +1,3 @@
-const express = require('express');
 const Forum = require('../models/forums');
 
 module.exports = {
