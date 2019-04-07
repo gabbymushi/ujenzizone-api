@@ -33,5 +33,8 @@ module.exports = {
                 res.status(500).json(err)
             });
         //res.send(req.body.first_name);
+    },
+    forgotPassword:function (req, res, next) {
+        
     }
 }
