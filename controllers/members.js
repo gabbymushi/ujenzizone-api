@@ -21,4 +21,7 @@ module.exports = {
     update: function (req, res, next) {
 
     },
+    delete: function (req, res, next) {
+
+    }
 }
