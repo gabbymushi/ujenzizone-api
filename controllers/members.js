@@ -23,5 +23,8 @@ module.exports = {
     },
     delete: function (req, res, next) {
 
+    },
+    changePassword: function (req, res, next) {
+
     }
 }
