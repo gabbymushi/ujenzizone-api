@@ -4,4 +4,8 @@ let commentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    thread_id: {
+        type: String,
+        
+    }
 });
