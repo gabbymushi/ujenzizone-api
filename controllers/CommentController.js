@@ -25,4 +25,7 @@ module.exports = {
         });
       
     },
+    edit: function (req, res, next) {
+
+    },
 }
