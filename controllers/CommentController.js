@@ -25,4 +25,13 @@ module.exports = {
         });
       
     },
+    edit: function (req, res, next) {
+
+    },
+    update: function (req, res, next) {
+
+    },
+    delete: function (req, res, next) {
+
+    }
 }
