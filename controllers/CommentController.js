@@ -11,4 +11,7 @@ module.exports = {
             res.status(500).json(err)
         });
     },
+    store: function (req, res, next) {
+      
+    },
 }
