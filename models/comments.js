@@ -6,6 +6,6 @@ let commentSchema = mongoose.Schema({
     },
     thread_id: {
         type: String,
-        
+        required: true
     }
 });
