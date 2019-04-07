@@ -15,6 +15,12 @@ module.exports = {
         let comment = new Comment();
         comment.comment=req.body.comment;
         comment.thread_id=req.body.thread_id;
+        return comment.save()
+        .then(comments => {
+            console.log(comments);
+            res.status(200).json(comments);
+        })
+        
       
     },
 }
