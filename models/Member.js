@@ -9,5 +9,9 @@ module.exports=sequelize.define("Member",{
     first_name:{
         type:Sequelize.STRING(60),
         allowNull:false
+    },
+    last_name:{
+        type:Sequelize.STRING(60),
+        allowNull:false
     }
 });
