@@ -19,4 +19,8 @@ module.exports=sequelize.define("Member",{
         allowNull:false,
         unique:true
     },
+    password:{
+        type:Sequelize.STRING(255),
+        allowNull:false
+    },
 });
