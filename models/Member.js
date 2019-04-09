@@ -5,6 +5,9 @@ module.exports=sequelize.define("Member",{
         allowNull:false,
         autoIncrement:true,
         primaryKey:true
+    },
+    first_name:{
+        type:Sequelize.STRING(60),
+        allowNull:false
     }
-
 });
