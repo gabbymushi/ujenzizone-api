@@ -24,8 +24,8 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      createdAt:Sequelize.Date,
-      updatedAt:Sequelize.Date,
+      createdAt:Sequelize.DATE,
+      updatedAt:Sequelize.DATE,
     });
   },
 
