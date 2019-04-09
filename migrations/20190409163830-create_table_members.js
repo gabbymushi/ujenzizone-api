@@ -37,6 +37,8 @@ module.exports = {
         type: Sequelize.STRING(255),
         allowNull: false
       },
+      createdAt:Sequelize.Date,
+      updatedAt:Sequelize.Date,
     });
   },
 
