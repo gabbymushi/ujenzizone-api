@@ -10,5 +10,9 @@ module.exports=sequelize.define("Forum",{
         type:Sequelize.STRING(60),
         allowNull:false
     },
+    description:{
+        type:Sequelize.TEXT,
+        allowNull:false
+    },
   
 });
