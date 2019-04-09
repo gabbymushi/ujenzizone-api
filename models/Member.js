@@ -14,6 +14,10 @@ module.exports=sequelize.define("Member",{
         type:Sequelize.STRING(60),
         allowNull:false
     },
+    gender:{
+        type:Sequelize.STRING(6),
+        allowNull:false
+    },
     email:{
         type:Sequelize.STRING(100),
         allowNull:false,
