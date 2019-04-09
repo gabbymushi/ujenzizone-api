@@ -2,9 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const config = require('./config/config');
 const jwt = require('jsonwebtoken');
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ujenzizone');
-let db = mongoose.connection;
+// const mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/ujenzizone');
+//let db = mongoose.connection;
+ require('./database/connection');
 //check connection
 db.once('open', function () {
     console.log('Connected to mangodb');
