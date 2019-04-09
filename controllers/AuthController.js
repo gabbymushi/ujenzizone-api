@@ -20,7 +20,7 @@ module.exports = {
         let member = new Member();
         member.first_name = req.body.first_name;
         member.last_name = req.body.last_name;
-        member.user_name = req.body.user_name;
+        //member.user_name = req.body.user_name;
         member.gender = req.body.gender;
         member.password = password;
         member.save()
