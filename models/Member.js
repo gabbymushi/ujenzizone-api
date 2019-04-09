@@ -13,5 +13,10 @@ module.exports=sequelize.define("Member",{
     last_name:{
         type:Sequelize.STRING(60),
         allowNull:false
-    }
+    },
+    email:{
+        type:Sequelize.STRING(100),
+        allowNull:false,
+        unique:true
+    },
 });
