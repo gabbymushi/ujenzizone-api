@@ -24,15 +24,19 @@ module.exports = {
         type: Sequelize.STRING(60),
         allowNull: false
       },
+      gender: {
+        type: Sequelize.STRING(6),
+        allowNull: false
+      },
       email: {
         type: Sequelize.STRING(100),
         allowNull: false,
         unique: true
       },
-      password:{
-        type:Sequelize.STRING(255),
-        allowNull:false
-    },
+      password: {
+        type: Sequelize.STRING(255),
+        allowNull: false
+      },
     });
   },
 
@@ -44,6 +48,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-   return queryInterface.dropTable('members');
+    return queryInterface.dropTable('members');
   }
 };
