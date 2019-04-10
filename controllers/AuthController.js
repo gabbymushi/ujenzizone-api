@@ -1,8 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-let Member = require('../models/members');
-var config = require('../config/config');
+let Member = require('../models/Member');
+var config = require('../config/_config');
 
 module.exports = {
     login: function (req, res, next) {
@@ -16,11 +16,12 @@ module.exports = {
         })
     },
     create: function (req, res, next) {
+        console.log('imefika');
         let password=bcrypt.hashSync(req.body.password,8)
         let member = new Member();
         member.first_name = req.body.first_name;
         member.last_name = req.body.last_name;
-        //member.user_name = req.body.user_name;
+        member.email = req.body.email;
         member.gender = req.body.gender;
         member.password = password;
         member.save()
