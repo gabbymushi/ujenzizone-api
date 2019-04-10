@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-let Member = require('../models/members');
+let Member = require('../models/Member');
 
 module.exports = {
     index:function(req,res,next){

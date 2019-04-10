@@ -1,0 +1,31 @@
+const Sequelize=require("sequelize");
+//const sequelize=require("../database/connection");
+module.exports=sequelize.define("Member",{
+    member_id:{
+        type:Sequelize.BIGINT,
+        allowNull:false,
+        autoIncrement:true,
+        primaryKey:true
+    },
+    first_name:{
+        type:Sequelize.STRING(60),
+        allowNull:false
+    },
+    last_name:{
+        type:Sequelize.STRING(60),
+        allowNull:false
+    },
+    gender:{
+        type:Sequelize.STRING(6),
+        allowNull:false
+    },
+    email:{
+        type:Sequelize.STRING(100),
+        allowNull:false,
+        unique:true
+    },
+    password:{
+        type:Sequelize.STRING(255),
+        allowNull:false
+    },
+});

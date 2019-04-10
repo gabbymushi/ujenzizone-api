@@ -1,4 +1,4 @@
-const Forum = require('../models/forums');
+const Forum = require('../models/Forum');
 
 module.exports = {
     index: function (req, res, next) {
