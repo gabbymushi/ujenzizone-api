@@ -35,7 +35,9 @@ app.use('/api/v1/forums',validateUser,forum);
 function validateUser(req, res, next) {
     //res.json({status:"error",data:req.headers['x-access-token']});
     var token = req.headers.authorization.split(' ')[1];
+    //return res.status(200).send(token);
     jwt.verify(token,config.secret, function(err, decoded) {
+      //return res.status(200).send(decoded);
       if (err) {
         res.status(403).json({status:"error", message: err.message, data:null});
       }else{
