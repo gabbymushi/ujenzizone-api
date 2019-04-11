@@ -19,7 +19,6 @@ module.exports = {
         });
     },
     create: function (req, res, next) {
-        console.log('imefika');
         let password=bcrypt.hashSync(req.body.password,8)
         let member = new Member();
         member.first_name = req.body.first_name;

@@ -2,8 +2,7 @@ const Forum = require('../models/Forum');
 
 module.exports = {
     index: function (req, res, next) {
-        Forum.find({})
-        .exec()
+        Forum.findAll({})
         .then(forums => {
             console.log(forums);
             res.status(200).json(forums);
