@@ -7,11 +7,10 @@ module.exports=sequelize.define("Thread",{
         autoIncrement:true,
         primaryKey:true
     },
-    // forum_id:{
-    //     type:Sequelize.INTEGER,
-    //     allowNull:false,
-    //     index:true
-    // },
+    forum_id:{
+        type:Sequelize.INTEGER,
+        allowNull:true
+    },
     title:{
         type:Sequelize.STRING(200),
         allowNull:false
