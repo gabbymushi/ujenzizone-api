@@ -6,17 +6,19 @@ var config = require('../config/_config');
 
 module.exports = {
     login: function (req, res, next) {
-        Member.findOne({user_name: req.body.user_name }, function (err, user) {
-            if (err) return res.status(500).send('Error on the server');
+        Member.findOne({where:{email: req.body.email }}).then(function (user) {
+            //return res.status(200).send(user.first_name);
+           // if (err) return res.status(500).send('Error on the server');
             if (!user) return res.status(404).send('No user found');
             let passwordIsValid = bcrypt.compareSync(req.body.password,user.password);
             if (!passwordIsValid) return res.status(401).send({auth: false, token: user.password});
-            let token = jwt.sign({ id: user._id }, config.secret, { expiresIn: 86400 });
+            let token = jwt.sign({ id: user.member_id }, config.secret, { expiresIn: 86400 });
             res.status(200).send({ auth: true, token: token });
-        })
+        }).catch(err => {
+            return res.status(500).send('Error on the server:'+err);
+        });
     },
     create: function (req, res, next) {
-        console.log('imefika');
         let password=bcrypt.hashSync(req.body.password,8)
         let member = new Member();
         member.first_name = req.body.first_name;
