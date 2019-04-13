@@ -1,10 +1,12 @@
 const express = require('express');
-const Thread = require('../models/threads');
+const Thread = require('../models/Thread');
 
 module.exports = {
     index: function (req, res, next) {
-        Thread.find({})
-        .exec()
+       //return res.status(200).json(req.params.id)
+        Thread.findAll({where: {
+            forum_id: req.params.id
+        }})
         .then(threads => {
             console.log(threads);
             res.status(200).json(threads);
