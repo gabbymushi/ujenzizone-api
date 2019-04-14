@@ -10,7 +10,7 @@ module.exports = {
             },
             include: [{
                 model:Forum,
-                
+                as: 'forum'
             }]
         })
          .then(threads => {
