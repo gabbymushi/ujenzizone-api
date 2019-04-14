@@ -1,6 +1,8 @@
 const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
-module.exports=sequelize.define("Thread",{
+const Forum = require('../models/Forum');
+
+const Thread=sequelize.define("Thread",{
     thread_id:{
         type:Sequelize.BIGINT,
         allowNull:false,
