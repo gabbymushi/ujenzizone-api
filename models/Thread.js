@@ -23,3 +23,4 @@ const Thread=sequelize.define("Thread",{
     },
   
 });
+  module.exports= Thread;
