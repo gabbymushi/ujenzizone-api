@@ -23,4 +23,10 @@ const Thread=sequelize.define("Thread",{
     },
   
 });
+Thread.belongsTo(Forum, {
+    foreignKey: 'forum_id',
+    targetKey: 'forum_id',
+    constraints: false,
+    as: 'forum'
+  });
   module.exports= Thread;
