@@ -8,7 +8,10 @@ module.exports = {
             where: {
                 forum_id: req.params.id
             },
-            
+            include: [{
+                model:Forum,
+                
+            }]
         })
          .then(threads => {
                 console.log(threads);
