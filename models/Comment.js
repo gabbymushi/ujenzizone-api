@@ -17,3 +17,9 @@ const Comment=sequelize.define("Comment",{
         allowNull:false
     },
 });
+Comment.belongsTo(Thread, {
+    foreignKey: 'thread_id',
+    targetKey: 'thread_id',
+    constraints: false,
+    as: 'comment'
+  });
