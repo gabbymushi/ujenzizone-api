@@ -20,7 +20,12 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true,
         //index: true,
-        
+        references: {
+           model: 'forums', 
+           key: 'forum_id' 
+          },
+          onUpdate: 'cascade',
+          onDelete: 'cascade'
       },
     
     });
