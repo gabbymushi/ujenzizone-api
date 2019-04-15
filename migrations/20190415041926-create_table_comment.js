@@ -27,6 +27,10 @@ module.exports = {
           onUpdate: 'cascade',
           onDelete: 'cascade'
       },
+      Comment:{
+        type:Sequelize.TEXT,
+        allowNull:false
+    },
     
     });
   },
