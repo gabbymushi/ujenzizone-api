@@ -31,7 +31,7 @@ module.exports = {
         type:Sequelize.TEXT,
         allowNull:false
     },
-    
+    createdAt: Sequelize.DATE,
     });
   },
 
