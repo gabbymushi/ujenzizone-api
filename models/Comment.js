@@ -8,4 +8,8 @@ const Comment=sequelize.define("Comment",{
         autoIncrement:true,
         primaryKey:true
     },
+    thread_id:{
+        type:Sequelize.INTEGER,
+        allowNull:true
+    },
 });
