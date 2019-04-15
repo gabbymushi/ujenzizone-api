@@ -9,7 +9,7 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    return queryInterface.createTable('threads', {
+    return queryInterface.createTable('comments', {
       comment_id: {
         type: Sequelize.BIGINT,
         allowNull: false,
@@ -44,5 +44,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
+   return queryInterface.dropTable('comments');
   }
 };
