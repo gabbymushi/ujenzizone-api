@@ -12,4 +12,8 @@ const Comment=sequelize.define("Comment",{
         type:Sequelize.INTEGER,
         allowNull:true
     },
+    Comment:{
+        type:Sequelize.TEXT,
+        allowNull:false
+    },
 });
