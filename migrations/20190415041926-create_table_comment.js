@@ -16,6 +16,12 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
+      thread_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        //index: true,
+        
+      },
     
     });
   },
