@@ -1,6 +1,6 @@
 const Sequelize=require("sequelize");
 //const sequelize=require("../database/connection");
-module.exports=sequelize.define("Member",{
+module.exports=sequelize.define("member",{
     member_id:{
         type:Sequelize.BIGINT,
         allowNull:false,

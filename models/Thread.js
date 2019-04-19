@@ -2,7 +2,7 @@ const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
 const Forum = require('../models/Forum');
 
-const Thread=sequelize.define("Thread",{
+const Thread=sequelize.define("thread",{
     thread_id:{
         type:Sequelize.BIGINT,
         allowNull:false,
