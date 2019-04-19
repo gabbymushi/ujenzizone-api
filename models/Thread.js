@@ -13,6 +13,10 @@ const Thread=sequelize.define("thread",{
         type:Sequelize.INTEGER,
         allowNull:true
     },
+    member_id:{
+        type:Sequelize.BIGINT,
+        allowNull:true
+    },
     title:{
         type:Sequelize.STRING(200),
         allowNull:false
