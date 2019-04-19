@@ -1,6 +1,6 @@
 const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
-module.exports=sequelize.define("Forum",{
+module.exports=sequelize.define("forum",{
     forum_id:{
         type:Sequelize.INTEGER,
         allowNull:false,
