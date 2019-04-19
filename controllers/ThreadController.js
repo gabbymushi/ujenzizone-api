@@ -27,6 +27,7 @@ module.exports = {
         thread.title = req.body.title;
         thread.body = req.body.body;
         thread.forum_id = req.body.forum_id;
+        thread.member_id = req.body.userId;
         return thread.save()
             .then(threads => {
                 console.log(threads);
