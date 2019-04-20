@@ -1,4 +1,4 @@
-const Comment = require('../models/comments');
+const Comment = require('../models/Comment');
 module.exports = {
     index: function (req, res, next) {
         Comment.find({})
@@ -15,6 +15,7 @@ module.exports = {
         let comment = new Comment();
         comment.comment=req.body.comment;
         comment.thread_id=req.body.thread_id;
+        comment.member_id=req.body.userId;
         return comment.save()
         .then(comments => {
             console.log(comments);
