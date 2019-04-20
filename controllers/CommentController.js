@@ -1,7 +1,8 @@
 const Comment = require('../models/Comment');
+const Member = require('../models/Member');
 module.exports = {
     index: function (req, res, next) {
-        Comment.find({
+        Comment.findAll({
             where: {
                 thread_id: req.params.id
             },
@@ -11,7 +12,6 @@ module.exports = {
                 as: 'member'
             }],
         })
-        .exec()
         .then(comments => {
             console.log(comments);
             res.status(200).json(comments);
