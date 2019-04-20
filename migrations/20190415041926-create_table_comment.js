@@ -27,6 +27,17 @@ module.exports = {
           onUpdate: 'cascade',
           onDelete: 'cascade'
       },
+      member_id: {
+        type: Sequelize.BIGINT,
+        allowNull: true,
+        //index: true,
+        references: {
+           model: 'members', 
+           key: 'member_id' 
+          },
+          onUpdate: 'cascade',
+          onDelete: 'cascade'
+      },
       Comment:{
         type:Sequelize.TEXT,
         allowNull:false
