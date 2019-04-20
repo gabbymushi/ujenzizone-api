@@ -1,8 +1,17 @@
 const Comment = require('../models/Comment');
+const Member = require('../models/Member');
 module.exports = {
     index: function (req, res, next) {
-        Comment.find({})
-        .exec()
+        Comment.findAll({
+            where: {
+                thread_id: req.params.id
+            },
+            include: [
+            {
+                model:Member,
+                as: 'member'
+            }],
+        })
         .then(comments => {
             console.log(comments);
             res.status(200).json(comments);

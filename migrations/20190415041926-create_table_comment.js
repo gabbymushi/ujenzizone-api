@@ -17,12 +17,12 @@ module.exports = {
         primaryKey: true
       },
       thread_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: true,
         //index: true,
         references: {
-           model: 'forums', 
-           key: 'forum_id' 
+           model: 'threads', 
+           key: 'thread_id' 
           },
           onUpdate: 'cascade',
           onDelete: 'cascade'

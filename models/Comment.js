@@ -1,6 +1,7 @@
 const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
 const Thread = require('../models/Thread');
+const Member = require('../models/Member');
 const Comment=sequelize.define("comments",{
     comment_id:{
         type:Sequelize.BIGINT,
@@ -26,5 +27,11 @@ Comment.belongsTo(Thread, {
     targetKey: 'thread_id',
     constraints: false,
     as: 'comments'
+  });
+Comment.belongsTo(Member, {
+    foreignKey: 'member_id',
+    targetKey: 'member_id',
+    constraints: false,
+    as: 'member'
   });
   module.exports=Comment;
