@@ -1,6 +1,7 @@
 const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
 const Forum = require('../models/Forum');
+const Member = require('../models/Member');
 
 const Thread=sequelize.define("thread",{
     thread_id:{
@@ -11,6 +12,10 @@ const Thread=sequelize.define("thread",{
     },
     forum_id:{
         type:Sequelize.INTEGER,
+        allowNull:true
+    },
+    member_id:{
+        type:Sequelize.BIGINT,
         allowNull:true
     },
     title:{
@@ -28,5 +33,11 @@ Thread.belongsTo(Forum, {
     targetKey: 'forum_id',
     constraints: false,
     as: 'forum'
+  });
+  Thread.belongsTo(Member, {
+    foreignKey: 'member_id',
+    targetKey: 'member_id',
+    constraints: false,
+    as: 'member'
   });
   module.exports= Thread;
