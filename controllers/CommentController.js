@@ -1,4 +1,4 @@
-const Comment = require('../models/comments');
+const Comment = require('../models/Comment');
 module.exports = {
     index: function (req, res, next) {
         Comment.find({})
