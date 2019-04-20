@@ -12,11 +12,11 @@ module.exports = {
             include: [{
                 model:Forum,
                 as: 'forum'
-            }],
-            include: [{
+            },
+            {
                 model:Member,
                 as: 'member'
-            }]
+            }],
         })
          .then(threads => {
                 console.log(threads);
