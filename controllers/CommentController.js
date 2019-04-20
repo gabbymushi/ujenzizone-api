@@ -5,6 +5,11 @@ module.exports = {
             where: {
                 thread_id: req.params.id
             },
+            include: [
+            {
+                model:Member,
+                as: 'member'
+            }],
         })
         .exec()
         .then(comments => {
