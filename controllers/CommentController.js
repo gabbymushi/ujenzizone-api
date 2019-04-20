@@ -1,7 +1,11 @@
 const Comment = require('../models/Comment');
 module.exports = {
     index: function (req, res, next) {
-        Comment.find({})
+        Comment.find({
+            where: {
+                thread_id: req.params.id
+            },
+        })
         .exec()
         .then(comments => {
             console.log(comments);
