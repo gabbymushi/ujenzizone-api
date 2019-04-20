@@ -1,5 +1,6 @@
 const Thread = require('../models/Thread');
 const Forum = require('../models/Forum');
+const Member = require('../models/Member');
 
 module.exports = {
     index: function (req, res, next) {
@@ -11,6 +12,10 @@ module.exports = {
             include: [{
                 model:Forum,
                 as: 'forum'
+            }],
+            include: [{
+                model:Member,
+                as: 'member'
             }]
         })
          .then(threads => {
