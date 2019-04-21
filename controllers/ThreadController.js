@@ -42,6 +42,29 @@ module.exports = {
                 res.status(500).json(err)
             });
     },
+    getThreadById: function (req, res, next) {
+        Thread.findAll({
+            where: {
+                thread_id: req.params.id
+            },
+            include: [{
+                model:Forum,
+                as: 'forum'
+            },
+            {
+                model:Member,
+                as: 'member'
+            }],
+        })
+         .then(threads => {
+                console.log(threads);
+                res.status(200).json(threads);
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).json(err)
+            });
+    },
     edit: function (req, res, next) {
 
     },
