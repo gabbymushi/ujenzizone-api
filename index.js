@@ -51,4 +51,4 @@ function validateUser(req, res, next) {
     
   }
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log('Ujenzi zone is running on port ' + port + '...'));
+server.listen(port, () => console.log('Ujenzi zone is running on port ' + port + '...'));
