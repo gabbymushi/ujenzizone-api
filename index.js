@@ -18,7 +18,7 @@ const jwt = require('jsonwebtoken');
 // });
 const app = express();
 const server=http.createServer(app);
-
+const io=socketIO(server);
 app.use(cors());
 app.use(express.json());
 //bring in models
