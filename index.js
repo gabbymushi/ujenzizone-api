@@ -1,4 +1,6 @@
 const express = require('express');
+const http = require('http');
+const socketIO = require('socket.io');
 const cors = require('cors');
 const config = require('./config/_config');
 const jwt = require('jsonwebtoken');
@@ -15,11 +17,58 @@ const jwt = require('jsonwebtoken');
 //     console.log(err)
 // });
 const app = express();
+const server=http.createServer(app);
+const io=socketIO(server);
 app.use(cors());
 app.use(express.json());
 //bring in models
 //let Member = require('./models/members')
-
+const Comment = require('./models/Comment');
+const Member = require('./models/Member');
+io.on('connection',socket=>{
+  console.log('user connected');
+  socket.on("initial_comments", id => {
+    Comment.findAll({
+      where: {
+          thread_id: id
+      },
+      include: [
+      {
+          model:Member,
+          as: 'member'
+      }],
+  })
+  .then(comments => {
+      console.log(comments);
+      // res.status(200).json(comments);
+      io.sockets.emit("getComments",comments);
+  })
+  .catch(err => {
+      //res.status(500).json(err)
+      console.log(err);
+  });
+  });
+  socket.on("saveComment", comments => {
+    let comment = new Comment();
+    comment.comment=comments.comment;
+    comment.thread_id=comments.thread_id;
+    comment.member_id=comments.member_id;
+    return comment.save()
+    .then(comments => {
+        console.log(comments);
+        //res.status(200).json(comments);
+        io.sockets.emit('changeData');
+    })
+    .catch(err => {
+       // res.status(500).json(err)
+       console.log(err);
+    });
+  
+  });
+  socket.on('disconnect', () => {
+    console.log('user disconnected')
+  });
+});
 //route files
 let member = require('./routes/members');
 let forum = require('./routes/forum');
@@ -47,4 +96,4 @@ function validateUser(req, res, next) {
     
   }
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log('Ujenzi zone is running on port ' + port + '...'));
+server.listen(port, () => console.log('Ujenzi zone is running on port ' + port + '...'));
