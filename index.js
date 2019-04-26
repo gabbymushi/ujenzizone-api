@@ -30,23 +30,35 @@ connections=[];
 io.on('connection',socket=>{
   connections.push(socket);
   console.log('Connected: %s sockects connected) ',connections.length);
-  socket.on("initial_comments", (id) => {
-     socket.join(id);
+  socket.on("initial_comments", (data) => {
+     socket.join(data.thread_id);
     Comment.findAll({
       where: {
-          thread_id: id
+          thread_id: data.thread_id
       },
       include: [
       {
           model:Member,
           as: 'member'
       }],
+       limit: 2,
+       offset: data.offset,
+      order: [
+        ['comment_id', 'DESC']
+    ],
   })
   .then(comments => {
       //console.log(comments);
       // res.status(200).json(comments);
       //io.sockets.emit("getComments",comments);
-       io.sockets.in(id).emit("getComments",comments);
+      Comment.findAndCountAll({
+        where: {
+          thread_id: data.thread_id
+      },
+      }).then(count=> {
+        io.sockets.in(data.thread_id).emit("getComments",{comments:comments,totalComments:count});
+      })
+       
   })
   .catch(err => {
       //res.status(500).json(err)
