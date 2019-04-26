@@ -4,7 +4,7 @@ module.exports = {
     index: function (req, res, next) {
         Forum.findAll({})
         .then(forums => {
-            console.log(forums);
+            // console.log(forums);
             res.status(200).json(forums);
         })
         .catch(err => {
@@ -17,7 +17,7 @@ module.exports = {
         forum.description=req.body.description;
         return forum.save()
         .then(forums => {
-            console.log(forums);
+            // console.log(forums);
             res.status(200).json(forums);
         })
         .catch(err => {
