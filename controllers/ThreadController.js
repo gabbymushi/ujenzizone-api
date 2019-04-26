@@ -19,7 +19,7 @@ module.exports = {
             }],
         })
          .then(threads => {
-                console.log(threads);
+                // console.log(threads);
                 res.status(200).json(threads);
             })
             .catch(err => {
@@ -35,7 +35,7 @@ module.exports = {
         thread.member_id = req.body.userId;
         return thread.save()
             .then(threads => {
-                console.log(threads);
+                // console.log(threads);
                 res.status(200).json(threads);
             })
             .catch(err => {
@@ -57,7 +57,7 @@ module.exports = {
             }],
         })
          .then(threads => {
-                console.log(threads);
+                // console.log(threads);
                 res.status(200).json(threads);
             })
             .catch(err => {
