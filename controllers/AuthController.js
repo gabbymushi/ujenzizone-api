@@ -29,7 +29,7 @@ module.exports = {
         member.save()
             //.exec()
             .then(members => {
-                console.log(members);
+                // console.log(members);
                 res.status(200).json(members);
             })
             .catch(err => {
