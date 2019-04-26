@@ -41,6 +41,9 @@ io.on('connection',socket=>{
           model:Member,
           as: 'member'
       }],
+      order: [
+        ['comment_id', 'DESC']
+    ],
   })
   .then(comments => {
       //console.log(comments);
