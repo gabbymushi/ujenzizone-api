@@ -25,9 +25,13 @@ app.use(express.json());
 //let Member = require('./models/members')
 const Comment = require('./models/Comment');
 const Member = require('./models/Member');
+users=[];
+connections=[];
 io.on('connection',socket=>{
-  console.log('user connected');
-  socket.on("initial_comments", id => {
+  connections.push(socket);
+  console.log('Connected: %s sockects connected) ',connections.length);
+  socket.on("initial_comments", (id) => {
+     socket.join(id);
     Comment.findAll({
       where: {
           thread_id: id
@@ -39,9 +43,10 @@ io.on('connection',socket=>{
       }],
   })
   .then(comments => {
-      console.log(comments);
+      //console.log(comments);
       // res.status(200).json(comments);
-      io.sockets.emit("getComments",comments);
+      //io.sockets.emit("getComments",comments);
+       io.sockets.in(id).emit("getComments",comments);
   })
   .catch(err => {
       //res.status(500).json(err)
@@ -49,15 +54,18 @@ io.on('connection',socket=>{
   });
   });
   socket.on("saveComment", comments => {
+    socket.join(comments.thread_id);
     let comment = new Comment();
     comment.comment=comments.comment;
     comment.thread_id=comments.thread_id;
     comment.member_id=comments.member_id;
     return comment.save()
     .then(comments => {
-        console.log(comments);
+        //console.log(comments);
         //res.status(200).json(comments);
-        io.sockets.emit('changeData');
+        //io.sockets.emit('changeData');
+        io.sockets.in(comments.thread_id).emit('changeData');
+
     })
     .catch(err => {
        // res.status(500).json(err)
@@ -66,7 +74,8 @@ io.on('connection',socket=>{
   
   });
   socket.on('disconnect', () => {
-    console.log('user disconnected')
+    connections.splice(connections.indexOf(socket),1)
+    console.log('Disconnected: %s sockects connected) ',connections.length);
   });
 });
 //route files
