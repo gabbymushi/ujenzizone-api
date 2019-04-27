@@ -51,7 +51,7 @@ io.on('connection',socket=>{
       //console.log(comments);
       // res.status(200).json(comments);
       //io.sockets.emit("getComments",comments);
-      Comment.findAndCountAll({
+      Comment.count({
         where: {
           thread_id: data.thread_id
       },
