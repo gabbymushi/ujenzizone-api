@@ -18,7 +18,10 @@ module.exports = {
                 as: 'member'
             }],
             limit: 2,
-            offset:req.params.offset
+            offset:req.params.offset,
+            order: [
+                ['thread_id', 'DESC']
+            ],
         })
          .then(threads => {
                 // console.log(threads);
