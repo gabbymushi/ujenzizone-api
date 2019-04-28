@@ -55,6 +55,7 @@ module.exports = {
                 model:Member,
                 as: 'member'
             }],
+            limit: 2,
         })
          .then(threads => {
                 // console.log(threads);
