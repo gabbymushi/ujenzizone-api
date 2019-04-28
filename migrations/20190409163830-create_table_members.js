@@ -38,8 +38,8 @@ module.exports = {
         allowNull: false
       },
       user_type: {
-        type: Sequelize.STRING(60),
-        allowNull: false
+        type: Sequelize.ENUM(10),
+        allowNull: true
       },
       createdAt:Sequelize.DATE,
       updatedAt:Sequelize.DATE,
