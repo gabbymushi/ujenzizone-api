@@ -38,7 +38,7 @@ module.exports = {
         allowNull: false
       },
       user_type: {
-        type: Sequelize.ENUM(10),
+        type: Sequelize.STRING(10),
         allowNull: true
       },
       createdAt:Sequelize.DATE,
