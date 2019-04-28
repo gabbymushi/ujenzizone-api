@@ -56,6 +56,7 @@ module.exports = {
                 as: 'member'
             }],
             limit: 2,
+            offest:req.params.offest
         })
          .then(threads => {
                 // console.log(threads);
