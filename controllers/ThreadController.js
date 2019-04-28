@@ -17,10 +17,19 @@ module.exports = {
                 model:Member,
                 as: 'member'
             }],
+            limit: 2,
+            offset:req.params.offset
         })
          .then(threads => {
                 // console.log(threads);
-                res.status(200).json(threads);
+                //res.status(200).json(threads);
+                Thread.count({
+                    where: {
+                        forum_id: req.params.id
+                  },
+                  }).then(count=> {
+                    res.status(200).json({threads:threads,totalThreads:count});
+                  })
             })
             .catch(err => {
                 console.log(err)
@@ -55,8 +64,6 @@ module.exports = {
                 model:Member,
                 as: 'member'
             }],
-            limit: 2,
-            offset:req.params.offset
         })
          .then(threads => {
                 // console.log(threads);
