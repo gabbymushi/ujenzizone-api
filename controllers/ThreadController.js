@@ -5,6 +5,7 @@ const Member = require("../models/Member");
 module.exports = {
   index: function(req, res, next) {
     //return res.status(200).json(req.params.id)
+    console.log('uu',req.params.offset);
     Thread.findAll({
       where: {
         forum_id: req.params.id
@@ -20,11 +21,11 @@ module.exports = {
         }
       ],
       limit: 2,
-      offset: req.params.offset,
+      offset: parseInt(req.params.offset),
       order: [["thread_id", "DESC"]]
     })
       .then(threads => {
-        // console.log(threads);
+         console.log('uu',req.params.offset);
         //res.status(200).json(threads);
         Thread.count({
           where: {
