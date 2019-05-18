@@ -1,7 +1,6 @@
 const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
-const Forum = require('../models/Forum');
-const Member = require('../models/Member');
+const Thread = require('../models/Thread');
 
 const File=sequelize.define("file",{
     file_id: {
