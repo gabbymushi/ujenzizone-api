@@ -59,16 +59,13 @@ module.exports = {
         file.thread_id = threads.thread_id;
         file.save();
         res.status(200).json("success")
-        // thread.body = req.body.body;
-        // thread.forum_id = req.body.forum_id;
-        // thread.member_id = req.body.member_id;
       })
       .catch(err => {
         res.status(500).json(err);
       });
   },
   getThreadById: function(req, res, next) {
-    Thread.findAll({
+    Thread.findOne({
       where: {
         thread_id: req.params.id
       },
@@ -80,6 +77,10 @@ module.exports = {
         {
           model: Member,
           as: "member"
+        },
+        {
+          model: File,
+          as: "file"
         }
       ]
     })

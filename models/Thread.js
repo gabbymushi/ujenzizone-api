@@ -2,6 +2,7 @@ const Sequelize=require("sequelize");
 const sequelize=require("../database/connection");
 const Forum = require('../models/Forum');
 const Member = require('../models/Member');
+const File = require('../models/File');
 
 const Thread=sequelize.define("thread",{
     thread_id:{
@@ -39,5 +40,11 @@ Thread.belongsTo(Forum, {
     targetKey: 'member_id',
     constraints: false,
     as: 'member'
+  });
+  Thread.hasMany(File, {
+    foreignKey: 'thread_id',
+    targetKey: 'thread_id',
+    constraints: false,
+    as: 'file'
   });
   module.exports= Thread;
