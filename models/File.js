@@ -13,14 +13,11 @@ const File=sequelize.define("file",{
       thread_id: {
         type: Sequelize.BIGINT,
         allowNull: true,
-        //index: true,
-        references: {
-           model: 'threads', 
-           key: 'thread_id' 
-          },
-          onUpdate: 'cascade',
-          onDelete: 'cascade'
       },
+      mime_type:{
+        type:Sequelize.STRING(60),
+        allowNull:false
+    },
   
 });
 
