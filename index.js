@@ -5,24 +5,14 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const config = require("./config/_config");
 const jwt = require("jsonwebtoken");
-// const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/ujenzizone');
-//let db = mongoose.connection;
-require("./database/connection");
-//check connection
-// db.once('open', function () {
-//     console.log('Connected to mangodb');
-// });
-//check for DB errors
-// db.on('error', function (err) {
-//     console.log(err)
-// });
+
+require("./database/connection");;
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 app.use(cors());
-app.use('/uploads',express.static('uploads'));
 app.use(bodyParser.json());
+app.use('/uploads',express.static('uploads'));
 //bring in models
 //let Member = require('./models/members')
 const Comment = require("./models/Comment");
@@ -105,6 +95,7 @@ app.use("/api/v1/comments", validateUser, comment);
 app.use("/api/v1/threads", validateUser, thread);
 function validateUser(req, res, next) {
   var token = req.headers.authorization.split(" ")[1];
+  console.log(token)
   jwt.verify(token, config.secret, function(err, decoded) {
     if (err) {
       res
