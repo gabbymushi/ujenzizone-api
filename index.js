@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const config = require("./config/_config");
 const jwt = require("jsonwebtoken");
 // const mongoose = require('mongoose');
@@ -20,7 +21,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 app.use(cors());
-app.use(express.json());
+app.use('/uploads',express.static('uploads'));
+app.use(bodyParser.json());
 //bring in models
 //let Member = require('./models/members')
 const Comment = require("./models/Comment");
