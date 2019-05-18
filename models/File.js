@@ -9,6 +9,10 @@ const File=sequelize.define("file",{
         autoIncrement: true,
         primaryKey: true
       },
+      file_name: {
+        type: Sequelize.STRING(200),
+        allowNull: false
+      },
       thread_id: {
         type: Sequelize.BIGINT,
         allowNull: true,
