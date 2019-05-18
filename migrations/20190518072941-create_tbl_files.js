@@ -27,7 +27,10 @@ module.exports = {
         onUpdate: 'cascade',
         onDelete: 'cascade'
     },
- 
+    mime_type:{
+      type:Sequelize.STRING(60),
+      allowNull:false
+  },
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,
   });
