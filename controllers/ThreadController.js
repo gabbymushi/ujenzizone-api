@@ -42,7 +42,7 @@ module.exports = {
       });
   },
   store: function(req, res, next) {
-  //console.log(req.file);
+    console.log(req.file);
     let thread = new Thread();
     thread.title = req.body.title;
     thread.body = req.body.body;
@@ -54,7 +54,7 @@ module.exports = {
         //  console.log(threads);
         // res.status(200).json(threads);
         let file = new File();
-        // thread.title = req.body.title;
+        file.file_name = req.file.filename;
         // thread.body = req.body.body;
         // thread.forum_id = req.body.forum_id;
         // thread.member_id = req.body.member_id;
