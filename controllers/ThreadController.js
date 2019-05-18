@@ -55,6 +55,7 @@ module.exports = {
         // res.status(200).json(threads);
         let file = new File();
         file.file_name = req.file.filename;
+        file.mime_type = req.file.mimetype;
         // thread.body = req.body.body;
         // thread.forum_id = req.body.forum_id;
         // thread.member_id = req.body.member_id;
