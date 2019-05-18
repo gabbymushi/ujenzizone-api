@@ -53,7 +53,7 @@ module.exports = {
       .then(threads => {
         //  console.log(threads);
         // res.status(200).json(threads);
-        //let file = new File();
+        let file = new File();
         // thread.title = req.body.title;
         // thread.body = req.body.body;
         // thread.forum_id = req.body.forum_id;
