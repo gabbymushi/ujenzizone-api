@@ -14,7 +14,7 @@ const File=sequelize.define("file",{
         allowNull: true,
       },
       mime_type:{
-        type:Sequelize.STRING(60),
+        type:Sequelize.STRING(20),
         allowNull:false
     },
   
