@@ -1,6 +1,7 @@
 const Thread = require("../models/Thread");
 const Forum = require("../models/Forum");
 const Member = require("../models/Member");
+const File = require("../models/File");
 
 module.exports = {
   index: function(req, res, next) {
@@ -50,8 +51,13 @@ module.exports = {
     return thread
       .save()
       .then(threads => {
-        // console.log(threads);
-        res.status(200).json(threads);
+        //  console.log(threads);
+        // res.status(200).json(threads);
+        //let file = new File();
+        // thread.title = req.body.title;
+        // thread.body = req.body.body;
+        // thread.forum_id = req.body.forum_id;
+        // thread.member_id = req.body.member_id;
       })
       .catch(err => {
         res.status(500).json(err);
