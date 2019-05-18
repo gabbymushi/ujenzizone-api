@@ -16,7 +16,18 @@ module.exports = {
       autoIncrement: true,
       primaryKey: true
     },
-
+    thread_id: {
+      type: Sequelize.BIGINT,
+      allowNull: true,
+      //index: true,
+      references: {
+         model: 'threads', 
+         key: 'thread_id' 
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+    },
+ 
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,
   });
