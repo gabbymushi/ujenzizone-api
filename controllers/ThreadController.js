@@ -1,6 +1,7 @@
 const Thread = require("../models/Thread");
 const Forum = require("../models/Forum");
 const Member = require("../models/Member");
+const File = require("../models/File");
 
 module.exports = {
   index: function(req, res, next) {
@@ -41,7 +42,7 @@ module.exports = {
       });
   },
   store: function(req, res, next) {
-  //console.log(req.file);
+    console.log(req.file);
     let thread = new Thread();
     thread.title = req.body.title;
     thread.body = req.body.body;
@@ -50,15 +51,21 @@ module.exports = {
     return thread
       .save()
       .then(threads => {
-        // console.log(threads);
-        res.status(200).json(threads);
+        //  console.log(threads);
+        // res.status(200).json(threads);
+        let file = new File();
+        file.file_name = req.file.filename;
+        file.mime_type = req.file.mimetype;
+        file.thread_id = threads.thread_id;
+        file.save();
+        res.status(200).json("success")
       })
       .catch(err => {
         res.status(500).json(err);
       });
   },
   getThreadById: function(req, res, next) {
-    Thread.findAll({
+    Thread.findOne({
       where: {
         thread_id: req.params.id
       },
@@ -70,6 +77,10 @@ module.exports = {
         {
           model: Member,
           as: "member"
+        },
+        {
+          model: File,
+          as: "file"
         }
       ]
     })
