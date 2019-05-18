@@ -5,7 +5,7 @@ const Member = require("../models/Member");
 module.exports = {
   index: function(req, res, next) {
     //return res.status(200).json(req.params.id)
-    console.log('uu',req.params.offset);
+    // console.log('uu',req.params.offset);
     Thread.findAll({
       where: {
         forum_id: req.params.id
@@ -41,11 +41,12 @@ module.exports = {
       });
   },
   store: function(req, res, next) {
+  //console.log(req.file);
     let thread = new Thread();
     thread.title = req.body.title;
     thread.body = req.body.body;
     thread.forum_id = req.body.forum_id;
-    thread.member_id = req.body.userId;
+    thread.member_id = req.body.member_id;
     return thread
       .save()
       .then(threads => {
