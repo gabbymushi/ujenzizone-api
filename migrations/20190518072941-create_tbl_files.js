@@ -10,7 +10,13 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
    return queryInterface.createTable('files', {
- 
+    file_id: {
+      type: Sequelize.BIGINT,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,
   });
