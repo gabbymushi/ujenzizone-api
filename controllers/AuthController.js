@@ -12,7 +12,7 @@ module.exports = {
             if (!user) return res.status(404).send('No user found');
             let passwordIsValid = bcrypt.compareSync(req.body.password,user.password);
             if (!passwordIsValid) return res.status(401).send({auth: false, token: user.password});
-            let token = jwt.sign({ id: user.member_id }, config.secret, { expiresIn: 86400 });
+            let token = jwt.sign({ id: user.member_id }, config.secret, { expiresIn: 86400});
             res.status(200).send({ auth: true, token: token,member:user });
         }).catch(err => {
             return res.status(500).send('Error on the server:'+err);
