@@ -25,4 +25,4 @@ File.belongsTo(Thread, {
     constraints: false,
     as: 'files'
   });
-  module.exports= Thread;
+  module.exports= File;
