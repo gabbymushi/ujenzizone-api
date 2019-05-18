@@ -19,5 +19,10 @@ const File=sequelize.define("file",{
     },
   
 });
-
+File.belongsTo(Thread, {
+    foreignKey: 'thread_id',
+    targetKey: 'thread_id',
+    constraints: false,
+    as: 'files'
+  });
   module.exports= Thread;
