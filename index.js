@@ -95,7 +95,7 @@ app.use("/api/v1/comments", validateUser, comment);
 app.use("/api/v1/threads", validateUser, thread);
 function validateUser(req, res, next) {
   var token = req.headers.authorization.split(" ")[1];
-  console.log(token)
+ // console.log(token)
   jwt.verify(token, config.secret, function(err, decoded) {
     if (err) {
       res
