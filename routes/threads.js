@@ -13,5 +13,5 @@ const storage = multer.diskStorage({
 const upload = multer({ storage:storage });
 router.get("/:id/offset/:offset", threadController.index);
 router.get("/:id/", threadController.getThreadById);
-router.post("/", upload.single("file"), threadController.store);
+router.post("/", upload.array("file"), threadController.store);
 module.exports = router;
