@@ -4,7 +4,7 @@ const Member = require("../models/Member");
 const File = require("../models/File");
 
 module.exports = {
-  index: function(req, res, next) {
+  index: function (req, res, next) {
     //return res.status(200).json(req.params.id)
     // console.log('uu',req.params.offset);
     Thread.findAll({
@@ -26,7 +26,7 @@ module.exports = {
       order: [["thread_id", "DESC"]]
     })
       .then(threads => {
-         console.log('uu',req.params.offset);
+        console.log('uu', req.params.offset);
         //res.status(200).json(threads);
         Thread.count({
           where: {
@@ -41,9 +41,9 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  store: function(req, res, next) {
+  store: function (req, res, next) {
     console.log(req.files[0].fieldname);
-    return;
+    //return;
     let thread = new Thread();
     thread.title = req.body.title;
     thread.body = req.body.body;
@@ -54,18 +54,20 @@ module.exports = {
       .then(threads => {
         //  console.log(threads);
         // res.status(200).json(threads);
-        let file = new File();
-        file.file_name = req.file.filename;
-        file.mime_type = req.file.mimetype;
-        file.thread_id = threads.thread_id;
-        file.save();
+        for (var i = 0; i < req.files.length; i++) {
+          let file = new File();
+          file.file_name = req.files[i].filename;
+          file.mime_type = req.files[i].mimetype;
+          file.thread_id = threads.thread_id;
+          file.save();
+        }
         res.status(200).json("success")
       })
       .catch(err => {
         res.status(500).json(err);
       });
   },
-  getThreadById: function(req, res, next) {
+  getThreadById: function (req, res, next) {
     Thread.findOne({
       where: {
         thread_id: req.params.id
@@ -94,7 +96,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  edit: function(req, res, next) {},
-  update: function(req, res, next) {},
-  delete: function(req, res, next) {}
+  edit: function (req, res, next) { },
+  update: function (req, res, next) { },
+  delete: function (req, res, next) { }
 };
