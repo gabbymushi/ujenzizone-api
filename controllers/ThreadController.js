@@ -54,7 +54,7 @@ module.exports = {
       .then(threads => {
         //  console.log(threads);
         // res.status(200).json(threads);
-        for (var i = 0; i < req.files.lenght; i++) {
+        for (var i = 0; i < req.files.length; i++) {
           let file = new File();
           file.file_name = req.file[i].filename;
           file.mime_type = req.file[i].mimetype;
