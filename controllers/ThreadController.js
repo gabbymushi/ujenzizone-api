@@ -43,7 +43,7 @@ module.exports = {
   },
   store: function(req, res, next) {
     console.log(req.files[0].fieldname);
-    return;
+    //return;
     let thread = new Thread();
     thread.title = req.body.title;
     thread.body = req.body.body;
