@@ -57,7 +57,7 @@ module.exports = {
         for(var i=0;i<req.files.lenght;i++){
         let file = new File();
         file.file_name = req.file[i].filename;
-        file.mime_type = req.file.mimetype;
+        file.mime_type = req.file[i].mimetype;
         file.thread_id = threads.thread_id;
         file.save();
         }
