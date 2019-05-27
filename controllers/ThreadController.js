@@ -54,11 +54,13 @@ module.exports = {
       .then(threads => {
         //  console.log(threads);
         // res.status(200).json(threads);
+        for(var i=0;i<req.files.lenght;i++){
         let file = new File();
         file.file_name = req.file.filename;
         file.mime_type = req.file.mimetype;
         file.thread_id = threads.thread_id;
         file.save();
+        }
         res.status(200).json("success")
       })
       .catch(err => {
