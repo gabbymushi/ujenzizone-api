@@ -27,6 +27,14 @@ const Thread=sequelize.define("thread",{
         type:Sequelize.TEXT,
         allowNull:false
     },
+    approvedAt:{ 
+        type:Sequelize.DATE,
+        allowNull: true,
+      },
+      declinedAt:{ 
+        type:Sequelize.DATE,
+        allowNull: true,
+      },
   
 });
 Thread.belongsTo(Forum, {
