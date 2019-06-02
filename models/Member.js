@@ -24,6 +24,10 @@ module.exports=sequelize.define("member",{
         allowNull:false,
         unique:true
     },
+    user_type:{
+        type:Sequelize.STRING(10),
+        allowNull:false
+    },
     password:{
         type:Sequelize.STRING(255),
         allowNull:false
