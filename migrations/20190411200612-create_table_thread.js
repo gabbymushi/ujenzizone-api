@@ -50,6 +50,10 @@ module.exports = {
         type:Sequelize.DATE,
         allowNull: true,
       },
+      declinedAt:{ 
+        type:Sequelize.DATE,
+        allowNull: true,
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });
