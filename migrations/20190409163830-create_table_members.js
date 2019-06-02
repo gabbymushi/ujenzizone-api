@@ -39,7 +39,7 @@ module.exports = {
       },
       user_type: {
         type: Sequelize.STRING(10),
-        allowNull: true
+        allowNull: false
       },
       createdAt:Sequelize.DATE,
       updatedAt:Sequelize.DATE,
