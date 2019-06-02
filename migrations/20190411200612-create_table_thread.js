@@ -46,6 +46,9 @@ module.exports = {
           onUpdate: 'cascade',
           onDelete: 'cascade'
       },
+      approvedAt:{ 
+        type:Sequelize.DATE,
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });
