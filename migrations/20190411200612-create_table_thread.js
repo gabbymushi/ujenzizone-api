@@ -48,6 +48,7 @@ module.exports = {
       },
       approvedAt:{ 
         type:Sequelize.DATE,
+        allowNull: true,
       },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
