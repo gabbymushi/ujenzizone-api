@@ -1,3 +1,4 @@
+const Sequelize = require("sequelize");
 const Thread = require("../models/Thread");
 const Forum = require("../models/Forum");
 const Member = require("../models/Member");
@@ -9,7 +10,10 @@ module.exports = {
     // console.log('uu',req.params.offset);
     Thread.findAll({
       where: {
-        forum_id: req.params.id
+        forum_id: req.params.id,
+        approvedAt: {
+          [Sequelize.Op.ne]: null
+        }
       },
       include: [
         {
