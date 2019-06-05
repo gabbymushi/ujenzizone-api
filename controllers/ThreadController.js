@@ -3,7 +3,6 @@ const Thread = require("../models/Thread");
 const Forum = require("../models/Forum");
 const Member = require("../models/Member");
 const File = require("../models/File");
-
 module.exports = {
   index: function (req, res, next) {
     //return res.status(200).json(req.params.id)
