@@ -100,7 +100,16 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  approveThread: function (req, res, next) { },
+  approveThread: function (req, res, next) {
+    Thread.update(
+      {approvedAt: new Date()},
+      {where: {thread_id: req.params.id} }
+    )
+    .then(function(rowsUpdated) {
+      res.json(rowsUpdated)
+    })
+    .catch(next)
+   },
   edit: function (req, res, next) { },
   update: function (req, res, next) { },
   delete: function (req, res, next) { }
