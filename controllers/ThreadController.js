@@ -100,6 +100,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+  approveThread: function (req, res, next) { },
   edit: function (req, res, next) { },
   update: function (req, res, next) { },
   delete: function (req, res, next) { }
