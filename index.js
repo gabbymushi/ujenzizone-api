@@ -6,7 +6,14 @@ const bodyParser = require("body-parser");
 const config = require("./config/_config");
 const jwt = require("jsonwebtoken");
 
-require("./database/connection");;
+const connection =require("./database/connection");
+connection.authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+      console.error('Unable to connect to the database:', err);
+    });
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
@@ -39,8 +46,6 @@ io.on("connection", socket => {
       order: [["comment_id", "DESC"]]
     })
       .then(comments => {
-        //console.log(comments);
-        // res.status(200).json(comments);
         //io.sockets.emit("getComments",comments);
         Comment.count({
           where: {
@@ -54,7 +59,6 @@ io.on("connection", socket => {
       })
       .catch(err => {
         //res.status(500).json(err)
-        console.log(err);
       });
   });
   socket.on("saveComment", comments => {
@@ -66,8 +70,6 @@ io.on("connection", socket => {
     return comment
       .save()
       .then(comments => {
-        //console.log(comments);
-        //res.status(200).json(comments);
         //io.sockets.emit('changeData');
         io.sockets.in(comments.thread_id).emit("changeData");
       })
