@@ -86,7 +86,8 @@ module.exports = {
         },
         {
           model: File,
-          as: "file"
+          as: "file",
+          // required:false
         }
       ]
     })
