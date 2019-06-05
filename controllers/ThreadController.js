@@ -45,7 +45,7 @@ module.exports = {
       });
   },
   store: function (req, res, next) {
-    console.log(req.files[0].fieldname);
+    // console.log(req.files[0].fieldname);
     //return;
     let thread = new Thread();
     thread.title = req.body.title;
@@ -86,7 +86,8 @@ module.exports = {
         },
         {
           model: File,
-          as: "file"
+          as: "file",
+          // required:false
         }
       ]
     })
@@ -99,6 +100,16 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+  approveThread: function (req, res, next) {
+    Thread.update(
+      {approvedAt: new Date()},
+      {where: {thread_id: req.params.id},returning: true,  }
+    )
+    .then(function(rowsUpdated) {
+      res.json(rowsUpdated)
+    })
+    .catch(next)
+   },
   edit: function (req, res, next) { },
   update: function (req, res, next) { },
   delete: function (req, res, next) { }

@@ -14,4 +14,5 @@ const upload = multer({ storage:storage });
 router.get("/:id/offset/:offset", threadController.index);
 router.get("/:id/", threadController.getThreadById);
 router.post("/", upload.array("file"), threadController.store);
+router.patch("/approve/:id", threadController.approveThread);
 module.exports = router;
