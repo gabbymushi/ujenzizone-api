@@ -103,7 +103,7 @@ module.exports = {
   approveThread: function (req, res, next) {
     Thread.update(
       {approvedAt: new Date()},
-      {where: {thread_id: req.params.id} }
+      {where: {thread_id: req.params.id},returning: true,  }
     )
     .then(function(rowsUpdated) {
       res.json(rowsUpdated)
