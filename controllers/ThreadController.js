@@ -111,8 +111,6 @@ module.exports = {
     .catch(next)
    },
    getPendingThreads: function (req, res, next) {
-    //return res.status(200).json(req.params.id)
-    // console.log('uu',req.params.offset);
     Thread.findAll({
       where: {
         // forum_id: req.params.id,
