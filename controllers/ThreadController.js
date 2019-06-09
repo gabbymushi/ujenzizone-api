@@ -110,6 +110,46 @@ module.exports = {
     })
     .catch(next)
    },
+   getPendingThreads: function (req, res, next) {
+    //return res.status(200).json(req.params.id)
+    // console.log('uu',req.params.offset);
+    Thread.findAll({
+      where: {
+        // forum_id: req.params.id,
+        approvedAt: {
+          [Sequelize.Op.eq]: null
+        }
+      },
+      include: [
+        {
+          model: Forum,
+          as: "forum"
+        },
+        {
+          model: Member,
+          as: "member"
+        }
+      ],
+      limit: 2,
+      offset: parseInt(req.params.offset),
+      order: [["thread_id", "DESC"]]
+    })
+      .then(threads => {
+        console.log('uu', req.params.offset);
+        //res.status(200).json(threads);
+        Thread.count({
+          where: {
+            forum_id: req.params.id
+          }
+        }).then(count => {
+          res.status(200).json({ threads: threads, totalThreads: count });
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
   edit: function (req, res, next) { },
   update: function (req, res, next) { },
   delete: function (req, res, next) { }
