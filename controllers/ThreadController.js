@@ -138,8 +138,8 @@ module.exports = {
         console.log('uu', req.params.offset);
         //res.status(200).json(threads);
         Thread.count({
-          where: {
-            forum_id: req.params.id
+          approvedAt: {
+            [Sequelize.Op.eq]: null
           }
         }).then(count => {
           res.status(200).json({ threads: threads, totalThreads: count });
