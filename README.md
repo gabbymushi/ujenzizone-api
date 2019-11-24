@@ -1,3 +1,3 @@
 # ujenzizone-api
-It is built on nodejs vs 8 engine using ExpressJS framework
+It is built on nodejs v8 engine using ExpressJS framework
 
